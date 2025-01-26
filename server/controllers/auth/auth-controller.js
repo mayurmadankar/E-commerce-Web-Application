@@ -1,8 +1,8 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../../models/User");
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../../models/User.js";
 
-//register
+// Register user
 const registerUser = async (req, res) => {
   const { userName, email, password } = req.body;
 
@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-//login
+// Login user
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -87,8 +87,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-//logout
-
+// Logout user
 const logoutUser = (req, res) => {
   res.clearCookie("token").json({
     success: true,
@@ -96,7 +95,7 @@ const logoutUser = (req, res) => {
   });
 };
 
-//auth middleware
+// Auth middleware
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies.token;
   if (!token)
@@ -117,4 +116,4 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = { registerUser, loginUser, logoutUser, authMiddleware };
+export { registerUser, loginUser, logoutUser, authMiddleware };

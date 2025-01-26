@@ -1,5 +1,6 @@
-const Address = require("../../models/Address");
+import Address from "../../models/Address.js";
 
+// Add address
 const addAddress = async (req, res) => {
   try {
     const { userId, address, city, pincode, phone, notes } = req.body;
@@ -35,6 +36,7 @@ const addAddress = async (req, res) => {
   }
 };
 
+// Fetch all addresses for a user
 const fetchAllAddress = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -60,6 +62,7 @@ const fetchAllAddress = async (req, res) => {
   }
 };
 
+// Edit an address
 const editAddress = async (req, res) => {
   try {
     const { userId, addressId } = req.params;
@@ -101,6 +104,7 @@ const editAddress = async (req, res) => {
   }
 };
 
+// Delete an address
 const deleteAddress = async (req, res) => {
   try {
     const { userId, addressId } = req.params;
@@ -133,4 +137,4 @@ const deleteAddress = async (req, res) => {
   }
 };
 
-module.exports = { addAddress, editAddress, fetchAllAddress, deleteAddress };
+export { addAddress, editAddress, fetchAllAddress, deleteAddress };

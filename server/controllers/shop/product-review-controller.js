@@ -1,11 +1,10 @@
-const Order = require("../../models/Order");
-const Product = require("../../models/Product");
-const ProductReview = require("../../models/Review");
+import Order from "../../models/Order.js";
+import Product from "../../models/Product.js";
+import ProductReview from "../../models/Review.js";
 
 const addProductReview = async (req, res) => {
   try {
-    const { productId, userId, userName, reviewMessage, reviewValue } =
-      req.body;
+    const { productId, userId, userName, reviewMessage, reviewValue } = req.body;
 
     const order = await Order.findOne({
       userId,
@@ -20,12 +19,12 @@ const addProductReview = async (req, res) => {
       });
     }
 
-    const checkExistinfReview = await ProductReview.findOne({
+    const checkExistingReview = await ProductReview.findOne({
       productId,
       userId,
     });
 
-    if (checkExistinfReview) {
+    if (checkExistingReview) {
       return res.status(400).json({
         success: false,
         message: "You already reviewed this product!",
@@ -81,4 +80,4 @@ const getProductReviews = async (req, res) => {
   }
 };
 
-module.exports = { addProductReview, getProductReviews };
+export { addProductReview, getProductReviews };

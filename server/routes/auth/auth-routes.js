@@ -1,10 +1,10 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   registerUser,
   loginUser,
   logoutUser,
-  authMiddleware,
-} = require("../../controllers/auth/auth-controller");
+  authMiddleware
+} from "../../controllers/auth/auth-controller.js";
 
 const router = express.Router();
 
@@ -16,8 +16,8 @@ router.get("/check-auth", authMiddleware, (req, res) => {
   res.status(200).json({
     success: true,
     message: "Authenticated user!",
-    user,
+    user
   });
 });
 
-module.exports = router;
+export default router;

@@ -1,6 +1,7 @@
-const { imageUploadUtil } = require("../../helpers/cloudinary");
-const Product = require("../../models/Product");
+import { imageUploadUtil } from "../../helpers/cloudinary.js";
+import Product from "../../models/Product.js";
 
+// Handle image upload
 const handleImageUpload = async (req, res) => {
   try {
     const b64 = Buffer.from(req.file.buffer).toString("base64");
@@ -20,7 +21,7 @@ const handleImageUpload = async (req, res) => {
   }
 };
 
-//add a new product
+// Add a new product
 const addProduct = async (req, res) => {
   try {
     const {
@@ -63,8 +64,7 @@ const addProduct = async (req, res) => {
   }
 };
 
-//fetch all products
-
+// Fetch all products
 const fetchAllProducts = async (req, res) => {
   try {
     const listOfProducts = await Product.find({});
@@ -81,7 +81,7 @@ const fetchAllProducts = async (req, res) => {
   }
 };
 
-//edit a product
+// Edit a product
 const editProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -129,7 +129,7 @@ const editProduct = async (req, res) => {
   }
 };
 
-//delete a product
+// Delete a product
 const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -143,7 +143,7 @@ const deleteProduct = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Product delete successfully",
+      message: "Product deleted successfully",
     });
   } catch (e) {
     console.log(e);
@@ -154,10 +154,10 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   handleImageUpload,
   addProduct,
   fetchAllProducts,
   editProduct,
-  deleteProduct,
+  deleteProduct
 };
