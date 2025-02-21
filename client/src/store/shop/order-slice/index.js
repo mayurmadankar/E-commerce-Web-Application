@@ -6,7 +6,7 @@ const initialState = {
   isLoading: false,
   orderId: null,
   orderList: [],
-  orderDetails: null,
+  orderDetails: null
 };
 
 export const createNewOrder = createAsyncThunk(
@@ -28,8 +28,7 @@ export const capturePayment = createAsyncThunk(
       "http://localhost:5000/api/shop/order/capture",
       {
         paymentId,
-        payerId,
-        orderId,
+        orderId
       }
     );
 
@@ -65,7 +64,7 @@ const shoppingOrderSlice = createSlice({
   reducers: {
     resetOrderDetails: (state) => {
       state.orderDetails = null;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -108,7 +107,7 @@ const shoppingOrderSlice = createSlice({
         state.isLoading = false;
         state.orderDetails = null;
       });
-  },
+  }
 });
 
 export const { resetOrderDetails } = shoppingOrderSlice.actions;

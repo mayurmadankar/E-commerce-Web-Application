@@ -1,9 +1,11 @@
-import paypal from "paypal-rest-sdk";
+import paypal from "@paypal/checkout-server-sdk";
+import dotenv from "dotenv";
+dotenv.config();
 
-paypal.configure({
-  mode: "sandbox",
-  client_id: process.env.CLIENT_ID,
-  client_secret: process.env.CLIENT_SECRET
-});
+const environment = new paypal.core.SandboxEnvironment(
+  process.env.PAYPAL_CLIENT_ID,
+  process.env.PAYPAL_CLIENT_SECRET
+);
+const client = new paypal.core.PayPalHttpClient(environment);
 
-export default paypal;
+export default client;
