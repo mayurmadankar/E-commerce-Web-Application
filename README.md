@@ -99,4 +99,4 @@ http://localhost:5173
 Feel free to fork the repository and contribute. If you find any issues, please open an issue.
 
 ---
-Made with ❤️ by [MAYUR MADANKAR]
+Made with ❤️ by MAYUR MADANKAR
