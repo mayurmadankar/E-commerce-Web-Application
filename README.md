@@ -31,20 +31,20 @@ This is a **Full Stack E-commerce Website** built using the **MERN stack (MongoD
 ## Installation & Setup
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/yourusername/mern-ecommerce.git
+git clone https://github.com/mayurmadankar/E-commerce-Web-Application.git
 cd mern-ecommerce
 ```
 
 ### 2. Install Dependencies
 #### Install Backend Dependencies
 ```sh
-cd backend
+cd server
 npm install
 ```
 
 #### Install Frontend Dependencies
 ```sh
-cd frontend
+cd client
 npm install
 ```
 
@@ -58,24 +58,26 @@ STRIPE_SECRET_KEY=your_stripe_key
 CLOUDINARY_CLOUD_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_key
 CLOUDINARY_API_SECRET=your_cloudinary_secret
+PAYPAL_CLIENT_ID=your_client_id
+PAYPAL_CLIENT_SECRET=your_client_secret
 ```
 
 ### 4. Run the Application
 #### Start Backend Server
 ```sh
-cd backend
+cd server
 npm start
 ```
 
 #### Start Frontend Server
 ```sh
-cd frontend
+cd client
 npm start
 ```
 
 ### 5. Open in Browser
 ```
-http://localhost:3000
+http://localhost:5173
 ```
 
 ## API Endpoints
@@ -96,8 +98,5 @@ http://localhost:3000
 ## Contribution
 Feel free to fork the repository and contribute. If you find any issues, please open an issue.
 
-## License
-This project is licensed under the **MIT License**.
-
 ---
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [MAYUR MADANKAR]
