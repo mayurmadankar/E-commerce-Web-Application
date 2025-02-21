@@ -8,7 +8,7 @@ This is a **Full Stack E-commerce Website** built using the **MERN stack (MongoD
 - **Product Management** (Add, Update, Delete products - Admin only).
 - **Shopping Cart** (Add, Remove, Update quantity).
 - **Order Processing** (Checkout, Payment, Order History).
-- **Payment Gateway Integration** (e.g., Stripe or Razorpay).
+- **Payment Gateway Integration** (Paypal).
 - **Admin Dashboard** (Manage Products, Orders, and Users).
 - **Responsive UI** for seamless experience on all devices.
 - **Secure API** using authentication and authorization.
