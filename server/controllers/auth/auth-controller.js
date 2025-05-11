@@ -11,26 +11,26 @@ const registerUser = async (req, res) => {
     if (checkUser)
       return res.json({
         success: false,
-        message: "User Already exists with the same email! Please try again",
+        message: "User Already exists with the same email! Please try again"
       });
 
     const hashPassword = await bcrypt.hash(password, 12);
     const newUser = new User({
       userName,
       email,
-      password: hashPassword,
+      password: hashPassword
     });
 
     await newUser.save();
     res.status(200).json({
       success: true,
-      message: "Registration successful",
+      message: "Registration successful"
     });
   } catch (e) {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Some error occured",
+      message: "Some error occured"
     });
   }
 };
@@ -44,7 +44,7 @@ const loginUser = async (req, res) => {
     if (!checkUser)
       return res.json({
         success: false,
-        message: "User doesn't exists! Please register first",
+        message: "User doesn't exists! Please register first"
       });
 
     const checkPasswordMatch = await bcrypt.compare(
@@ -54,7 +54,7 @@ const loginUser = async (req, res) => {
     if (!checkPasswordMatch)
       return res.json({
         success: false,
-        message: "Incorrect password! Please try again",
+        message: "Incorrect password! Please try again"
       });
 
     const token = jwt.sign(
@@ -62,9 +62,9 @@ const loginUser = async (req, res) => {
         id: checkUser._id,
         role: checkUser.role,
         email: checkUser.email,
-        userName: checkUser.userName,
+        userName: checkUser.userName
       },
-      "CLIENT_SECRET_KEY",
+      process.env.JWT_SECRET_KEY,
       { expiresIn: "60m" }
     );
 
@@ -75,14 +75,14 @@ const loginUser = async (req, res) => {
         email: checkUser.email,
         role: checkUser.role,
         id: checkUser._id,
-        userName: checkUser.userName,
-      },
+        userName: checkUser.userName
+      }
     });
   } catch (e) {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Some error occured",
+      message: "Some error occured"
     });
   }
 };
@@ -91,7 +91,7 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
   res.clearCookie("token").json({
     success: true,
-    message: "Logged out successfully!",
+    message: "Logged out successfully!"
   });
 };
 
@@ -101,7 +101,7 @@ const authMiddleware = async (req, res, next) => {
   if (!token)
     return res.status(401).json({
       success: false,
-      message: "Unauthorised user!",
+      message: "Unauthorised user!"
     });
 
   try {
@@ -111,7 +111,7 @@ const authMiddleware = async (req, res, next) => {
   } catch (error) {
     res.status(401).json({
       success: false,
-      message: "Unauthorised user!",
+      message: "Unauthorised user!"
     });
   }
 };
