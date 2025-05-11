@@ -80,6 +80,18 @@ const shoppingOrderSlice = createSlice({
           JSON.stringify(action.payload.orderId)
         );
       })
+      .addCase(capturePayment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(capturePayment.fulfilled, (state, action) => {
+        state.isLoading = false;
+        // Optionally save payment status or order update if needed
+        console.log("Payment captured successfully:", action.payload);
+      })
+      .addCase(capturePayment.rejected, (state, action) => {
+        state.isLoading = false;
+        console.error("Payment capture failed:", action.error);
+      })
       .addCase(createNewOrder.rejected, (state) => {
         state.isLoading = false;
         state.approvalURL = null;

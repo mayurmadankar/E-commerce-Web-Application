@@ -36,7 +36,7 @@ function ShoppingCheckout() {
     if (cartItems.length === 0) {
       toast({
         title: "Your cart is empty. Please add items to proceed",
-        variant: "destructive",
+        variant: "destructive"
       });
 
       return;
@@ -44,7 +44,7 @@ function ShoppingCheckout() {
     if (currentSelectedAddress === null) {
       toast({
         title: "Please select one address to proceed.",
-        variant: "destructive",
+        variant: "destructive"
       });
 
       return;
@@ -61,7 +61,7 @@ function ShoppingCheckout() {
           singleCartItem?.salePrice > 0
             ? singleCartItem?.salePrice
             : singleCartItem?.price,
-        quantity: singleCartItem?.quantity,
+        quantity: singleCartItem?.quantity
       })),
       addressInfo: {
         addressId: currentSelectedAddress?._id,
@@ -69,7 +69,7 @@ function ShoppingCheckout() {
         city: currentSelectedAddress?.city,
         pincode: currentSelectedAddress?.pincode,
         phone: currentSelectedAddress?.phone,
-        notes: currentSelectedAddress?.notes,
+        notes: currentSelectedAddress?.notes
       },
       orderStatus: "pending",
       paymentMethod: "paypal",
@@ -78,11 +78,11 @@ function ShoppingCheckout() {
       orderDate: new Date(),
       orderUpdateDate: new Date(),
       paymentId: "",
-      payerId: "",
+      payerId: ""
     };
 
     dispatch(createNewOrder(orderData)).then((data) => {
-      console.log(data, "sangam");
+      console.log(data, "mayur");
       if (data?.payload?.success) {
         setIsPaymemntStart(true);
       } else {
