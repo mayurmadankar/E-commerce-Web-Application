@@ -16,9 +16,14 @@ import shopReviewRouter from "./routes/shop/review-routes.js";
 
 import commonFeatureRouter from "./routes/common/feature-routes.js";
 import { connectUsingMongoose } from "./config/mongoose.js";
+import { fileURLToPath } from "url";
+import path from "path";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(
   cors({
@@ -49,6 +54,12 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port number ${PORT}`);
